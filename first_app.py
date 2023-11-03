@@ -1,8 +1,39 @@
 from flask import Flask, request, jsonify
+from pydantic import BaseModel
+from flask_pydantic import validate
+
+
+class Body(BaseModel):
+    name: str
+    age: int
+
+
+class NewQuery(BaseModel):
+    name: str
+    year: int
 
 
 app = Flask(__name__)
 user = {}
+
+
+@app.route("/head")
+def head():
+    return dict(request.headers)
+
+
+@app.post("/intro")
+@validate()
+def intro(body: Body):
+    return f"Hello, my name is {body.name} ands I am {body.age} years old"
+
+
+@app.route("/intro2")
+@validate()
+def intro_bis(query: NewQuery):
+    playerName = query.name
+    playerBirthYear = query.year
+    return jsonify({"message": f"{playerName} est un meneur de jeu de Portland né en {playerBirthYear}"})
 
 
 @app.get("/users")
@@ -15,7 +46,7 @@ def get_user_id(id):
     if str(id) in user:
         return user[str(id)]
     else:
-        return "l'utilisateur n'a pas été trouvé", 404
+        return jsonify({"404": "l'utilisateur n'a pas été trouvé"})
 
 
 @app.post("/add/user")
@@ -42,4 +73,4 @@ def del_user(id):
         del user[id]
         return f"l'utilisateur {deleted_user} a été supprimé.\nListe de user actuelle : {user}"
     else:
-        return "L'utilisateur n'a pas été trouvé.", 404
+        return jsonify({"404": "l'utilisateur n'a pas été trouvé"})
