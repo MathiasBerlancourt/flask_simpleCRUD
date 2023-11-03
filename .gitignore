@@ -1,0 +1,59 @@
+# Fichiers générés par Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Dossiers générés par Flask
+instance/
+migrations/
+
+# Fichiers de configuration (par exemple, avec python-decouple)
+.env
+
+# Fichiers de sauvegarde de l'éditeur (par exemple, VS Code)
+.vscode/
+
+# Fichiers système
+.DS_Store
+
+# Environnement virtuel (si vous utilisez un environnement virtuel)
+venv/
+
+# Fichiers de logs (assurez-vous d'ajuster cela en fonction de votre configuration)
+logs/
+
+# Fichiers de données temporaires ou de cache
+*.db
+*.sqlite
+
+# Fichiers de configuration spécifiques à l'IDE (par exemple, PyCharm)
+.idea/
+
+# Dossiers de construction ou de distribution (par exemple, dist, build)
+dist/
+build/
+
+# Fichiers compilés ou générés (par exemple, .pyc, .class)
+*.pyc
+*.class
+
+# Fichiers de dépendances de gestionnaire de paquets
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+
+# Fichiers générés par le système d'exploitation
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+$RECYCLE.BIN/
+
+# Fichiers temporaires ou de sauvegarde
+*.swp
+*~
